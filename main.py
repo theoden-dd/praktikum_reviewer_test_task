@@ -118,6 +118,7 @@ class CashCalculator(Calculator):
         # расчет валюты от логики вывода. Это повысит читаемость.
         if cash_remained > 0:
             return (
+                # Вызов функции в ф-строке. Решается форматом `{x:.2}`.
                 f'На сегодня осталось {round(cash_remained, 2)} '
                 f'{currency_type}'
             )
@@ -126,6 +127,8 @@ class CashCalculator(Calculator):
             return 'Денег нет, держись'
         elif cash_remained < 0:
             # Продолжение строки через обратный слэш.
+            # Для единообразия лучше использовать ф-строки, раз уж они
+            # применены в других местах.
             return 'Денег нет, держись:' \
                    ' твой долг - {0:.2f} {1}'.format(-cash_remained,
                                                      currency_type)
